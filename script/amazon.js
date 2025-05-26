@@ -12,7 +12,7 @@ products.forEach((product)=>{
           <div class="product-name limit-text-to-2-lines">
            ${product.name}
           </div>
-
+            
           <div class="product-rating-container">
             <img class="product-rating-stars"
               src="images/ratings/rating-${product.rating.stars*10}.png">
@@ -54,7 +54,6 @@ products.forEach((product)=>{
     `;
 });
 document.querySelector('.js-products-grid').innerHTML=productshtml;
- 
 
  
   function updatecartquantity(){
@@ -62,6 +61,7 @@ document.querySelector('.js-products-grid').innerHTML=productshtml;
     cart.forEach((cartItem)=>{
      cartQuantity+=cartItem.quantity;
     });
+    document.querySelector('.cart-quantity').innerHTML=cartQuantity;
   }
 
 document.querySelectorAll('.js-add-to-cart')
@@ -71,6 +71,5 @@ document.querySelectorAll('.js-add-to-cart')
 
   addtocart(productId);
   updatecartquantity();
-   document.querySelector('.cart-quantity').innerHTML=cartQuantity;
   });
 });
