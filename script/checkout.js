@@ -1,4 +1,4 @@
-import {cart} from '../data/cart.js';
+import {cart,removeFromCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 import { formatcurrency } from './utils/money.js';
 //duplicating or normalising data as we need image and other details so we took from product array
@@ -38,7 +38,7 @@ cartsummaryhtml+=`
             <span class="update-quantity-link link-primary">
             Update
             </span>
-            <span class="delete-quantity-link link-primary">
+            <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchingproduct.id}">
             Delete
             </span>
         </div>
@@ -92,4 +92,12 @@ cartsummaryhtml+=`
     </div>`
 });
 
-document.querySelector('.order-summary').innerHTML=cartsummaryhtml;
+document.querySelector('.js-order-summary').innerHTML=cartsummaryhtml;
+
+document.querySelectorAll('.js-delete-link')
+.forEach((link)=>{
+   link.addEventListener('click',()=>{
+   const productId=link.dataset.productId;
+   removeFromCart(productId);
+   });
+});
