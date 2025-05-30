@@ -4,7 +4,6 @@ import { formatcurrency } from './utils/money.js';
 //duplicating or normalising data as we need image and other details so we took from product array
 
 let cartsummaryhtml='';
-
 cart.forEach((cartItem)=>{
     const productId=cartItem.id;
     let matchingproduct;
@@ -13,7 +12,6 @@ cart.forEach((cartItem)=>{
             matchingproduct=product;
         }
     });
-
 cartsummaryhtml+=`
 <div class="cart-item-container js-cart-item-container-${matchingproduct.id}">
     <div class="delivery-date">
