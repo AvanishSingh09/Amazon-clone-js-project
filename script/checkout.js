@@ -1,6 +1,7 @@
 import {cart,removeFromCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 import { formatcurrency } from './utils/money.js';
+import {updatecartquantity} from './utils/cart-quantity.js';
 //duplicating or normalising data as we need image and other details so we took from product array
 
 let cartsummaryhtml='';
@@ -92,14 +93,17 @@ cartsummaryhtml+=`
 
 document.querySelector('.js-order-summary').innerHTML=cartsummaryhtml;
 
+updatecartquantity();
+
 document.querySelectorAll('.js-delete-link')
 .forEach((link)=>{
    link.addEventListener('click',()=>{
    const productId=link.dataset.productId;
    removeFromCart(productId);
 
-   const container=document.querySelector(`.js-cart-item-container-${productId}`  
-   );
-    container.remove();
+   const container=document.querySelector(`.js-cart-item-container-${productId}`);
+   container.remove();
+   
+   updatecartquantity();
    });
 });
