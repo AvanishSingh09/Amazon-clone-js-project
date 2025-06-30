@@ -1,7 +1,7 @@
 import { cart } from "../../data/cart.js";
 
 export function updatecartquantity() {
-  let cartQuantity = 0;
+  let cartQuantity = 0;j
   cart.forEach((cartItem) => {
     cartQuantity += cartItem.quantity;
   });
