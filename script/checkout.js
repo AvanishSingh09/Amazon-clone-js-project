@@ -3,6 +3,13 @@ import { products } from '../data/products.js';
 import { formatcurrency } from './utils/money.js';
 import { updatecartquantity } from './utils/cart-quantity.js';
 
+
+import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'
+
+const today=dayjs();
+const deliverydate= today.add(7,'day');
+deliverydate.format('dddd,  MMMM D');
+console.log(deliverydate.format('dddd,  MMMM D'));
 let cartsummaryhtml = '';
 
 cart.forEach((cartItem) => {
